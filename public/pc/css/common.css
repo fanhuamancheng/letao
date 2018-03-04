@@ -113,3 +113,6 @@ a, a:hover, a:visited, a:link, a:active {
     text-align: center;
     vertical-align: middle;
 }
+.mb_20{
+    margin-bottom: 20px;
+}

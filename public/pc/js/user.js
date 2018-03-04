@@ -53,15 +53,15 @@ $(function () {
     $('.btn_confirm').on('click', function () {
         // 发送ajax请求
         $.ajax({
-            type:'post',
-            url:'/user/updateUser',
-            data:{
-                id:id,
-                isDelete:isDelete
+            type: 'post',
+            url: '/user/updateUser',
+            data: {
+                id: id,
+                isDelete: isDelete
             },
-            success:function (info) {
+            success: function (info) {
                 // console.log(info);
-                if(info.success){
+                if (info.success) {
                     $('#userModal').modal('hide');
                     render();
                 }
