@@ -102,3 +102,9 @@ a, a:hover, a:visited, a:link, a:active {
     color: #fff;
     font-size: 16px;
 }
+
+.main_body_content .charts_1,
+.main_body_content .charts_2 {
+    width:45%;
+    height: 400px;
+}
