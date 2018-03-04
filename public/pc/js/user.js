@@ -2,6 +2,8 @@ $(function () {
     // 发送AJAX请求
     var page = 1;
     var pageSize = 5;
+    var id;
+    var isDelete;
 
     function render() {
         $.ajax({
@@ -37,6 +39,36 @@ $(function () {
     }
 
     render();
+
+    // 启用禁用功能
+    $('tbody').on('click', '.btn', function () {
+        // console.log(1);
+        // 显示模态框
+        $('#userModal').modal('show');
+        id = $(this).parent().data('id');
+        // console.log(id);
+        isDelete = $(this).hasClass('btn-success') ? '1' : '0';
+        // console.log(isDelete);
+    });
+    $('.btn_confirm').on('click', function () {
+        // 发送ajax请求
+        $.ajax({
+            type:'post',
+            url:'/user/updateUser',
+            data:{
+                id:id,
+                isDelete:isDelete
+            },
+            success:function (info) {
+                // console.log(info);
+                if(info.success){
+                    $('#userModal').modal('hide');
+                    render();
+                }
+            }
+        });
+
+    })
 
 
 });
