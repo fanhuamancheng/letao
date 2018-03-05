@@ -69,7 +69,7 @@ $(function () {
                     // 重置表单的内容和样式
                     $form.data('bootstrapValidator').resetForm(true);
                     // 重新渲染第一页
-                    page=1;
+                    page = 1;
                     render();
                 }
             }
