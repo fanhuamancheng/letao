@@ -25,10 +25,11 @@ a, a:hover, a:visited, a:link, a:active {
     width: 180px;
     height: 100%;
     background-color: #222d32;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     transition: 1s;
+    z-index: 9;
 }
 
 .lt_aside.now {
@@ -84,6 +85,7 @@ a, a:hover, a:visited, a:link, a:active {
     /*background-color: pink;*/
     padding-left: 180px;
     transition: all 1s;
+    padding-top: 70px;
 }
 
 .lt_main.now {
@@ -94,8 +96,17 @@ a, a:hover, a:visited, a:link, a:active {
     height: 50px;
     background-color: #3c8dbc;
     line-height: 50px;
-    padding: 0 20px;
+    padding: 0 20px 0 200px;
     margin-bottom: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition:all 1s;
+}
+
+.lt_main .main_header.now {
+    padding-left: 20px;
 }
 
 .lt_main .main_header a {
@@ -105,30 +116,33 @@ a, a:hover, a:visited, a:link, a:active {
 
 .main_body_content .charts_1,
 .main_body_content .charts_2 {
-    width:45%;
+    width: 45%;
     height: 400px;
 }
+
 .table.table-bordered th,
-.table.table-bordered td{
+.table.table-bordered td {
     text-align: center;
     vertical-align: middle;
 }
-.mb_20{
+
+.mb_20 {
     margin-bottom: 20px;
 }
+
 /*.file_box{*/
-    /*width: 82px;*/
-    /*height: 34px;*/
-    /*position: relative;*/
+/*width: 82px;*/
+/*height: 34px;*/
+/*position: relative;*/
 /*}*/
 /*.file_box:hover [type='button']{*/
-    /*background-color: #ddd;*/
+/*background-color: #ddd;*/
 /*}*/
 /*.file_box [type='file']{*/
-    /*position: absolute;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*left: 0;*/
-    /*top: 0;*/
-    /*opacity: 0;*/
+/*position: absolute;*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*left: 0;*/
+/*top: 0;*/
+/*opacity: 0;*/
 /*}*/
