@@ -1,7 +1,7 @@
 $(function () {
     // 渲染二级分类的数据
     var page = 1;
-    var pageSize = 5;
+    var pageSize = 8;
 
     var render = function () {
         $.ajax({
