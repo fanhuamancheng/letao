@@ -23,7 +23,7 @@
     <div class="nav">
         <ul>
             <li>
-                <a  href="user.html">
+                <a href="user.html">
                     <span class="glyphicon glyphicon-user"></span>
                     用户管理
                 </a>
@@ -33,7 +33,7 @@
                     <span class="glyphicon glyphicon-list"></span>
                     分类管理
                 </a>
-                <div class="second" style="display: none">
+                <div class="second" style="display: block">
                     <a href="first.html">一级分类</a>
                     <a href="second.html">二级分类</a>
                 </div>
@@ -61,9 +61,36 @@
             <li><a href="#">管理系统</a></li>
             <li class="active">商品管理</li>
         </ol>
-        <div class="main_body_content"></div>
+        <!--内容-->
+        <div class="main_body_content">
+            <button class="btn btn-default btn_add mb_20">添加商品</button>
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th width="10%">序号</th>
+                    <th width="25%">商品名称</th>
+                    <th width="25%">商品描述</th>
+                    <th width="10%">商品库存</th>
+                    <th width="10%">商品尺寸</th>
+                    <th width="10%">商品状态</th>
+                    <th width="10%">操作</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <!--挖个坑-->
+
+                </tbody>
+            </table>
+            <!--分页插件-->
+            <div class="text-right">
+                <ul id="paginator"></ul>
+            </div>
+
+        </div>
     </div>
 </div>
+<!--退出登录的模态框-->
 <div id="Modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -82,12 +109,133 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<!--添加分类的模态框-->
+<div id="productModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">添加商品</h4>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+                    <input type="hidden" name="statu" value="1">
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <input type="hidden" name="brandId">
+                                <span class="dropdown_text">请选择二级分类</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <!--再挖个坑-->
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!--商品名称输入框-->
+                    <div class="form-group">
+                        <input autocomplete="off" type="text" name="proName" class="form-control"
+                               placeholder="请输入商品的名称">
+                    </div>
+                    <!--商品描述文本域-->
+                    <div class="form-group">
+                        <textarea placeholder="请输入商品描述" name="proDesc" class="form-control" rows="3"></textarea>
+                    </div>
+                    <!--商品库存输入框-->
+                    <div class="form-group">
+                        <input autocomplete="off" type="text" name="num" class="form-control"
+                               placeholder="请输入商品的库存">
+                    </div>
+                    <!--商品尺码的输入框-->
+                    <div class="form-group">
+                        <input autocomplete="off" type="text" name="size" class="form-control"
+
+                               placeholder="请输入商品的尺码(32-44)">
+                    </div>
+                    <!--商品的原价输入框-->
+                    <div class="form-group">
+                        <input autocomplete="off" type="text" name="oldPrice" class="form-control"
+
+                               placeholder="请输入商品的原价">
+                    </div>
+                    <!--商品的现价输入框-->
+                    <div class="form-group">
+                        <input autocomplete="off" type="text" name="price" class="form-control"
+
+                               placeholder="请输入商品的价格">
+                    </div>
+                    <!--上传文件-->
+                    <div class="form-group">
+                        <!--button有表单提交功能，所以不用-->
+                        <!--<button class="btn btn-default">上传图片</button>-->
+                        <div class="file_box">
+                            <!--<input type="button" class="btn btn-default" value="上传aaaaa图片">-->
+                            <label class="btn btn-default" for="fileupload">上传图片</label>
+                            <!--图片上传,需要name属性和data-url属性-->
+                            <input name="pic1" data-url="/product/addProductPic" multiple style="display: none;"
+                                   id="fileupload" class="btn btn-default" type="file">
+                        </div>
+
+                    </div>
+                    <!--上传的文件展示-->
+                    <div class="form-group img_box">
+                        <!--<img width="100" src="images/none.png" alt="">-->
+                        <input type="hidden" name="productLogo">
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <!--h5的新属性form-->
+                <button type="submit" form="form" class="btn btn-primary">添加</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </body>
 </html>
 
+<script type="text/html" id="productTpl">
+    {{each rows v i}}
+    <tr>
+        <td>{{(page-1)*size+i+1}}</td>
+        <td>{{v.proName}}</td>
+        <td>{{v.proDesc}}</td>
+        <td>{{v.num}}</td>
+        <td>{{v.size}}</td>
+        <td>{{v.statu==1?'已上架':'已下架'}}</td>
+        <td>
+            {{if v.statu==1}}
+            <button class="btn btn-success btn-sm">
+                <a href="javascript:;">下架</a>
+            </button>
+            {{else}}
+            <button class="btn btn-danger btn-sm">
+                <a href="javascript:;">上架</a>
+            </button>
+            {{/if}}
+
+        </td>
+    </tr>
+    {{/each}}
+</script>
+<script type="text/html" id="tpl2">
+    {{each rows v i}}
+    <li><a data-id="{{v.id}}" href="javascript:;">{{v.brandName}}</a></li>
+    {{/each}}
+</script>
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="lib/nprogress/nprogress.js"></script>
+<script src="lib/echarts/echarts.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
 <script src="js/common.js"></script>
-<script src="js/index.js"></script>
+<script src="js/product.js"></script>

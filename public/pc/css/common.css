@@ -32,6 +32,7 @@ a, a:hover, a:visited, a:link, a:active {
     z-index: 9;
 }
 
+
 .lt_aside.now {
     left: -180px;
 }
@@ -128,6 +129,9 @@ a, a:hover, a:visited, a:link, a:active {
 
 .mb_20 {
     margin-bottom: 20px;
+}
+.btn a{
+    color:#fff;
 }
 
 /*.file_box{*/
